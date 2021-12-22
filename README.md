@@ -1,2 +1,13 @@
 # mob-e2e-appium-codeceptjs
 Mobile end-to-end testing with Appium + codeceptJS
+
+
+Run tests
+```
+npm run codeceptjs
+```
+
+Open report
+```
+npm run report
+```
