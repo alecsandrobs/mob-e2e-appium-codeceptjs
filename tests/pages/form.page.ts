@@ -10,5 +10,8 @@ export class FormPage {
         actor().tap(this.comboConsoleOptions(option))
     }
     static checkbox = CommonPage.contentDesc('check', 'on checkbox')
+    static isChecked = () => actor().grabAttributeFrom(this.checkbox, 'checked')
+    static switch = CommonPage.contentDesc('switch', 'on switch')
+    static isSwitchOn = () => actor().grabAttributeFrom(this.switch, 'checked')
 
 }

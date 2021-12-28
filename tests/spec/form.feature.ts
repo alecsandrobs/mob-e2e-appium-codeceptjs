@@ -20,6 +20,22 @@ Scenario('Should select option in combo', () => {
     I.see(optionSelect, FormPage.comboConsoleSelected)
 })
 
+Scenario('Should interact with checkbox', async () => {
+    // I.dontSeeCheckboxIsChecked(FormPage.checkbox) ### It is not working ###
+    I.assertEqual(await FormPage.isChecked(), 'false', 'that checkbox should be unchecked')
+    I.tap(FormPage.checkbox)
+    I.assertEqual(await FormPage.isChecked(), 'true', 'that checkbox should be checked')
+    // I.seeCheckboxIsChecked(FormPage.checkbox) ### It is not working ###
+})
+
+Scenario('Should interact with switch', async () => {
+    I.assertEqual(await FormPage.isSwitchOn(), 'true', 'that switch should be on')
+    I.tap(FormPage.switch)
+    I.assertEqual(await FormPage.isSwitchOn(), 'false', 'that switch should be off')
+    I.tap(FormPage.switch)
+    I.assertEqual(await FormPage.isSwitchOn(), 'true', 'that switch should be on')
+})
+
 Scenario('Filling form', () => {
     const name = 'John Joe Jones'
     const console = 'PS4'
@@ -39,3 +55,5 @@ Scenario('Filling form', () => {
 });
 
 After(() => { })
+
+// const isChecked = (element: any) => I.grabAttributeFrom(element, 'checked')
