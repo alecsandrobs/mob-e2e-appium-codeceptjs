@@ -1,3 +1,5 @@
+require('ts-node/register');
+
 const { setHeadlessWhen } = require('@codeceptjs/configure');
 
 // turn on headless mode when running with HEADLESS=true environment variable
@@ -5,17 +7,20 @@ const { setHeadlessWhen } = require('@codeceptjs/configure');
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: 'tests/spec/*.feature.js',
+  tests: './tests/spec/*.feature.ts',
   output: './output',
   helpers: {
     Appium: {
       app: `${process.cwd()}/tests/resources/apk/CTAppium_1_2.apk`,
       platform: 'Android',
       device: 'emulator'
+    },
+    AssertWrapper : {
+      require: 'codeceptjs-assert'
     }
   },
   include: {
-    I: './steps_file.js'
+    I: './steps_file.ts'
   },
   bootstrap: null,
   mocha: {},
