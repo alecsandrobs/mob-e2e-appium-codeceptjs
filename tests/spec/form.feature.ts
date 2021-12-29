@@ -10,8 +10,8 @@ Before(() => {
 
 Scenario('Should fill field name', () => {
     const name = 'Joe Montana'
-    I.fillField(FormPage.fieldName, name)
-    I.see(name, FormPage.fieldName)
+    I.fillField(FormPage.nameField, name)
+    I.see(name, FormPage.nameField)
 })
 
 Scenario('Should select option in combo', () => {
@@ -36,11 +36,20 @@ Scenario('Should interact with switch', async () => {
     I.assertEqual(await FormPage.isSwitchOn(), 'true', 'that switch should be on')
 })
 
+Scenario('Should interact with datepicker', async () => {
+    I.tap(FormPage.dateFieldDefault)
+    I.tap(FormPage.yearField)
+    const date: string = '29/12/2021'
+    await FormPage.selectDate(date)
+    // await I.selectDate(date)
+    I.seeElement(FormPage.dateField(date))
+}).tag('@wip')
+
 Scenario('Filling form', () => {
     const name = 'John Joe Jones'
     const console = 'PS4'
 
-    I.fillField(FormPage.fieldName, name)
+    I.fillField(FormPage.nameField, name)
     FormPage.selectConsoleOption(console)
     I.tap(FormPage.checkbox)
     I.tap('SALVAR')

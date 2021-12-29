@@ -17,7 +17,13 @@ exports.config = {
     },
     AssertWrapper : {
       require: 'codeceptjs-assert'
-    }
+    },
+    FormActions: {
+      require: './tests/resources/helpers/FormActions.ts'
+    },
+    Calc: {
+      require: './tests/resources/helpers/Calc.ts'
+    },
   },
   include: {
     I: './steps_file.ts'
